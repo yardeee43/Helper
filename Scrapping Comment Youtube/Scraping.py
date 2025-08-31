@@ -95,17 +95,17 @@ def scrape_youtube_comments(url):
     return comments
 
 def main():
-    url = "https://www.youtube.com/watch?v=VL3Fv73y7Xw"
+    url = "https://www.youtube.com/watch?v=VL3Fv73y7Xw" #link youtube(bukan shorts)
     comments = scrape_youtube_comments(url)
 
-    file_name = "youtube_comments.csv"
+    file_name = "youtube_comments.csv" #nama file csv
     file_exists = os.path.exists(file_name)
 
     with open(file_name, "a", encoding="utf-8", newline="") as f:
         writer = csv.writer(f)
 
         if not file_exists:
-            writer.writerow(["username", "comment"])  # tulis header hanya kalau file baru
+            writer.writerow(["username", "comment"])  
 
         for username, text in comments:
             writer.writerow([username, text])
@@ -114,3 +114,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
